@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tasques Cicliques</title>
+</head>
+<body>
+    <script>
+        function plan(miembros, tareas, numSemanas) {
+
+            for (let semana = 0; semana < numSemanas; semana++) {
+                console.log(` Semana ${semana + 1}`);
+
+                const miembrosRotados = [];
+
+                for (let i = 0; i < miembros.length; i++) {
+                    const index = ( i + semana ) % miembros.length;
+                    miembrosRotados.push(miembros[index]);
+                }
+
+                for (let j = 0; j < tareas.length; j++) {
+                    const miembro = miembrosRotados[ semana % miembros.length];
+                    console.log(` - ${miembro} : ${tareas[j]}`);
+                }
+            }
+        }
+
+        plan(
+            ["Pare", "Mare", "Fill", "Filla"],
+            ["Posar la rentadora", "Fer la cuina neta", "Fer el bany net"],
+            52
+        );
+
+        plan(
+            ["Pare", "Mare", "Fill", "Filla"],
+            ["Planxar", "Fer el bany net"],
+            4
+        );
+
+        plan(
+            ["Pare", "Mare", "Fill", "Filla gran", "Filla petita"],
+            ["Posar la rentadora", "Fer la cuina neta", "Netejar la casa", "Planxar", "Fer el bany net"],
+            12
+        );
+    </script>
+
+</body>
+</html>
