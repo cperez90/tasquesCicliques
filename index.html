@@ -10,19 +10,20 @@
         function plan(miembros, tareas, numSemanas) {
 
             for (let semana = 0; semana < numSemanas; semana++) {
-                console.log(` Semana ${semana + 1}`);
 
-                const miembrosRotados = [];
+                const listaSemana = [];
 
-                for (let i = 0; i < miembros.length; i++) {
-                    const index = ( i + semana ) % miembros.length;
-                    miembrosRotados.push(miembros[index]);
+                for (let i = 0; i < tareas.length; i++) {
+                    const tareaIndex = (i + semana) % tareas.length;
+                    const miembroIndex = (i + semana) % miembros.length;
+
+                    const tarea = tareas[tareaIndex];
+                    const miembro = miembros[miembroIndex];
+
+                    listaSemana.push(`${tarea} ${miembro}`);
                 }
 
-                for (let j = 0; j < tareas.length; j++) {
-                    const miembro = miembrosRotados[ semana % miembros.length];
-                    console.log(` - ${miembro} : ${tareas[j]}`);
-                }
+                console.log(`semana ${semana +1}: ${listaSemana.join(' | ')}`);
             }
         }
 
